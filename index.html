@@ -16,11 +16,12 @@
             <div class="num"></div>
             <div class="num"></div>
             <div class="num"></div>
-            <!-- <div class="num"></div> -->
             <div class="btn"></div>
         </div>
     </div>
+    
 </div>
+
 
 <script type="text/javascript" src="js/jquery-1.11.0.js"></script>
 <script type="text/javascript" src="js/animateBackground-plugin.js"></script>
@@ -35,7 +36,7 @@ function numRand() {
 
 var isBegin = false;
 $(function(){
-    var u = 265;
+    var u = 134 * 10;
     $('.btn').click(function(){
         // 点击按钮 发送ajax
 
@@ -51,11 +52,12 @@ $(function(){
         $('#res').text('result = '+result);
         var num_arr = (result+'').split('');
         $(".num").each(function(index){
-            var _num = $(this);
-            var yPos = (u*60) - (u*num_arr[index]);
+            var _num = $(this)
+            var yPos = (u*4) - (u*num_arr[index]) ;
             setTimeout(function(){
                 _num.animate({ 
                     backgroundPosition: '11px ' + yPos + 'px'
+                    // top: -yPos + 'px'
                 },{
                     duration: 6000+index*3000,
                     easing: "easeInOutCirc",
@@ -66,7 +68,59 @@ $(function(){
             }, index * 300);
         });
     }); 
+    drawAndShareImage();    
 });
+function drawAndShareImage(){
+    var canvas = document.createElement("canvas");
+    canvas.width = 156;
+    canvas.height = 134 * 3;
+    var context = canvas.getContext("2d");
+
+    context.rect(0 , 0 , canvas.width , canvas.height);
+    context.fillStyle = "#fff";
+    context.fill();
+
+    var myImage = new Image();
+    myImage.src = "./images/1.jpg";    //背景图片  你自己本地的图片或者在线图片
+    myImage.crossOrigin = 'Anonymous';
+
+    myImage.onload = function(){
+        context.drawImage(myImage , 0 , 0 , 156 , 134);
+
+        context.font = "60px Courier New";
+        context.fillText("我是文字",350,450);
+
+        var myImage2 = new Image();
+        myImage2.src = "./images/2.jpg";   //你自己本地的图片或者在线图片
+        myImage2.crossOrigin = 'Anonymous';
+        
+        myImage2.onload = function(){
+            context.drawImage(myImage2 , 0 , 134 , 156 , 134);
+            var base64 = canvas.toDataURL("image/png");  //"image/png" 这里注意一下
+
+
+
+            var myImage3 = new Image();
+            myImage3.src = "./images/3.jpg";   //你自己本地的图片或者在线图片
+            myImage3.crossOrigin = 'Anonymous';
+             
+            myImage3.onload = function(){
+                context.drawImage(myImage3 , 0 , 134 * 2 , 156 , 134);
+                var base64 = canvas.toDataURL("image/png");  //"image/png" 这里注意一下
+                $('.num').each( function () {
+                    // console.log(base64)
+                    $(this).css('background-image', 'url('+base64+')')
+                })
+                // var img = document.getElementById('avatar');
+                // document.getElementById('avatar').src = base64;
+                // img.setAttribute('src' , base64);
+            }
+
+
+
+        }
+    }
+}
 </script>
 </body>
 </html>

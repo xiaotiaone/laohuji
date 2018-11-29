@@ -38,12 +38,22 @@ body {
 	text-align: center;
 }
 .num {
-	background: url(../images/num.png) top center repeat-y;
+	background: top center repeat-y;
+	/* background: url(../images/num.png) top center repeat-y; */
 	width: 181px;
-	height: 265px;
+	height: 134px;
+	overflow: hidden;
 	float: left;
 	margin-right: 6px;
+	/* position: relative; */
 }
+/* .num .img {
+	position: absolute;
+	top: 0;
+}
+.num .img img {
+	float: left;
+} */
 .btn {
 	background: url(../images/btn_start.png) 0px 0px no-repeat;
 	width: 264px;
