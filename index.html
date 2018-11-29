@@ -16,7 +16,7 @@
             <div class="num"></div>
             <div class="num"></div>
             <div class="num"></div>
-            <div class="num"></div>
+            <!-- <div class="num"></div> -->
             <div class="btn"></div>
         </div>
     </div>
@@ -27,8 +27,8 @@
 <script type="text/javascript" src="js/easing.js"></script>
 <script>
 function numRand() {
-    var x = 9999; //上限
-    var y = 1111; //下限
+    var x = 333; //上限    有几个图表 你就设置多少
+    var y = 111; //下限
     var rand = parseInt(Math.random() * (x - y + 1) + y);
     return rand;
 }
@@ -37,10 +37,17 @@ var isBegin = false;
 $(function(){
     var u = 265;
     $('.btn').click(function(){
-        if(isBegin) return false;
+        // 点击按钮 发送ajax
+
+        if(isBegin) return false; // 这是为了节流
         isBegin = true;
         $(".num").css('background-position', '11px 0');
-        var result = numRand();
+        var result;
+        if (true) { // 如多你的 ajax 结果 为中将 
+            result = 111; // id 为1  就是 111    为2 就是 222 为3 就是 333 ... 依次
+        } else {
+            result = numRand(); // 取随机的
+        }
         $('#res').text('result = '+result);
         var num_arr = (result+'').split('');
         $(".num").each(function(index){

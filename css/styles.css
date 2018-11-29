@@ -7,7 +7,7 @@ body {
 	background: url(../images/body_bg.jpg) 0px 0px repeat-x #000;
 }
 .main_bg {
-	background: url(../images/main_bg.jpg) bottom center no-repeat;
+	/* background: url(../images/main_bg.jpg) bottom center no-repeat; */
 	height:760px;
 }
 .main {
@@ -19,7 +19,7 @@ body {
 .num_mask {
 	background: url(../images/num_mask.png) 0px 0px no-repeat;
 	height: 184px;
-	width: 740px;
+	width: 555px;
 	position: absolute;
 	left: 50%;
 	top: 100px;
@@ -28,7 +28,7 @@ body {
 }
 .num_box {
 	height: 450px;
-	width: 750px;
+	width: 565px;
 	position: absolute;
 	left: 50%;
 	top: 100px;
